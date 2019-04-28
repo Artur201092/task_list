@@ -1,4 +1,5 @@
 Install Python PIP
+
     sudo apt-get install python-pip
 
 Install virtualenvwrapper
