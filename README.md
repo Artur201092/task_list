@@ -27,7 +27,7 @@ Create virtualenv
     
 Install requirements for a project.
 
-    cd /var/www/short_url && pip install -r requirements.txt
+    cd /var/www/task_list && pip install -r requirements.txt
 
 ##Database creation
 ###For psql
