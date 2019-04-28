@@ -40,9 +40,11 @@ Install requirements for a project.
     
 
 For run project
+
     python3 manage.py runserver
 
 
 For Mamble team
+
     Sorry about ui and stiles :)
         
