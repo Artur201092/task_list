@@ -33,8 +33,9 @@ def get_task(request, pk=None):
 
 
 def delete_task(request, pk=None):
-    task = Tasks.objects.get(pk=pk)
-    task.delete()
+    task = Tasks.objects.filter(pk=pk).first()
+    if task:
+        task.delete()
     tasks = Tasks.objects.all()
     form = TaskForm
     return render(request, 'home.html', {'form': form, 'delete_success': True, 'tasks': tasks})
