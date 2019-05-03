@@ -26,7 +26,7 @@ SECRET_KEY = 'thryfyh@&6=eque$ye3gzmt@skj4v$s2^r)hxbo84j%yicd+ci'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com']
+ALLOWED_HOSTS = ['test-task-for-mamble.herokuapp.com']
 
 
 # Application definition
