@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.urls import path
 
-from apps.tasks.views import HomeView, delete_task, get_task, add_task
+from apps.tasks.views import HomeView, delete_task, get_task, add_task, search_tasks
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'add-task/$', add_task, name='add_task'),
     url(r'get-task/(?P<pk>\d+)/$', get_task, name='get_task'),
     url(r'delete-task/(?P<pk>\d+)/$', delete_task, name='delete_task'),
+    url(r'search-task', search_tasks, name='search_tasks'),
 ]

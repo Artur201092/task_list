@@ -1,30 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <title>Add and remove Tasks</title>
-</head>
-<body style="background-color: gainsboro">
-
-    <h1>Add Your Task</h1>
+{% extends 'base.html' %}
+{% block content %}
     <form action="{% url 'add_task' %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit" class="btn btn-primary">Add</button>
+        <form>
+            {% csrf_token %}
+            <fieldset>
+                <legend class="col-md-6">Add Your Task</legend>
+                <div class="form-group col-md-6">
+                    <label for="task_name">Task name</label>
+                    <input type="text" class="form-control" id="task_name" placeholder="enter task name..." name="name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="task_name">Task description</label>
+                    <input type="text" class="form-control" id="task_name" placeholder="enter description..." name="description">
+                </div>
+                <button type="submit" class="btn btn-primary col-md-1" style="margin-left: 15px">Submit</button>
+            </fieldset>
+        </form>
     </form>
 
     {% if tasks %}
         <ul>
         <h1>Tasks List</h1>
         {% for task in tasks %}
-            <li><a href="{% url 'get_task' task.pk %}">{{ task.name }}</a><a href="{% url 'delete_task' task.pk %}">     x</a></li>
+            <li><a class="btn btn-secondary" href="{% url 'get_task' task.pk %}">{{ task.name }}</a>
+                <a class="btn btn-danger" href="{% url 'delete_task' task.pk %}" style="margin-left: 20px">x</a>
+            </li>
         {% endfor %}
     {% else %}
-        <span>Your task list is empty</span>
+        <span class="col-md-6">Your task list is empty</span>
     {% endif %}
     </ul>
-
-</body>
-</html>
+{% endblock %}

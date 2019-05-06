@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <a href="{% url 'home' %}">back to home</a>
+    <h4 class="col-md-">Search Results</h4>
+    {% if tasks %}
+        <ul>
+        {% for task in tasks %}
+            <li><a href="{% url 'get_task' task.pk %}">{{ task.name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        Sorry we couldn't find any results matching: "{{ search_keyword }}"
+    {% endif %}
+{% endblock %}

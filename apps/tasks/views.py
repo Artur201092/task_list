@@ -18,13 +18,14 @@ class HomeView(View):
 
 
 def add_task(request):
-    form = TaskForm(request.POST)
     data = request.POST
+    form = TaskForm(data={"name": data.get("name"), "description": data.get("description")})
+    tasks = Tasks.objects.all().order_by("-created_at")
     if form.is_valid():
         task = Tasks(name=data["name"], description=data["description"])
         task.save()
-        tasks = Tasks.objects.all().order_by("-created_at")
         return render(request, 'home.html', {'form': form, 'tasks': tasks})
+    return render(request, 'home.html', {'form': form, 'tasks': tasks})
 
 
 def get_task(request, pk=None):
@@ -39,3 +40,10 @@ def delete_task(request, pk=None):
     tasks = Tasks.objects.all()
     form = TaskForm
     return render(request, 'home.html', {'form': form, 'delete_success': True, 'tasks': tasks})
+
+
+def search_tasks(request):
+    search_query = request.GET.get("search_query", None)
+    tasks = Tasks.objects.filter(name__icontains=search_query)
+    return render(request, "search_results.html", {"tasks": tasks, "search_keyword": search_query})
+

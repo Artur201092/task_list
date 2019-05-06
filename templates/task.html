@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <title>Shorting Url</title>
-</head>
-<body style="background-color: gainsboro">
+{% extends 'base.html' %}
+{% block content %}
     <a href="{% url 'home' %}">back to home</a>
     {% if task %}
         <h1>Task: {{ task.name }}</h1>
@@ -14,5 +7,4 @@
             <span>{{ task.description }}</span>
     {% endif %}
     </ul>
-</body>
-</html>
+{% endblock %}
